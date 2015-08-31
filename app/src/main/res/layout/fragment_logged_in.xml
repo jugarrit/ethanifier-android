@@ -18,6 +18,7 @@
             android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/avatar"
+            android:visibility="gone"
             android:contentDescription="Ethan's Avatar" />
 
         <ImageView
@@ -29,17 +30,19 @@
             android:layout_alignBottom="@id/avatarImage"
             android:layout_marginRight="9dp"
             android:layout_marginBottom="3dp"
-            android:layout_alignRight="@id/avatarImage" />
+            android:layout_alignRight="@id/avatarImage"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/slackUser"
+        android:id="@+id/slackUserText"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/Ethanifier_headerText"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,6 +50,23 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/presenceText"
         android:layout_gravity="center_horizontal"
+        android:textColor="@color/Ethanifier_subheaderText"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:layout_width="@dimen/Ethanifier_avatarSize"
+        android:layout_height="@dimen/Ethanifier_avatarSize"
+        android:id="@+id/loadingSpinner"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/loadingText"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/availabilityText"
         android:textColor="@color/Ethanifier_subheaderText" />
 
     <Button

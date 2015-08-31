@@ -5,18 +5,16 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import io.supportkit.ethanifier.R;
 import io.supportkit.ethanifier.utils.ImageHelper;
@@ -26,30 +24,35 @@ public class LoggedInFragment extends Fragment implements View.OnClickListener {
     private static Button chatButton;
     private static ImageView avatarImage;
     private static ImageView presenceImage;
-    private static TextView slackUser;
+    private static TextView slackUserText;
     private static TextView presenceText;
+    private static ProgressBar loadingSpinner;
 
-    private String presence, name, avatarUrl;
-    private boolean slackResponseSuccessful = false;
+    private static TextView loadingText;
+
+    private String presence, name;
     private Resources resources;
-    private Bitmap anonymousAvatar;
+    private Bitmap anonymousAvatarBitmap;
+    private Bitmap avatarBitmap;
 
-    public void onSlackResponse(String presence, String name, String avatarUrl) {
+    public void onPresenceLoaded(String presence, String name) {
         this.presence = presence;
         this.name = name;
-        this.avatarUrl = avatarUrl;
 
-        slackResponseSuccessful = true;
-
-        downloadAvatar();
+        updateAvailability();
     }
 
-    private void downloadAvatar() {
+    public void onAvatarLoaded(Bitmap avatar) {
+        this.avatarBitmap = avatar;
+
+        updateAvatar();
+    }
+
+    private void updateAvailability() {
         final Context activity = getActivity();
 
         if (activity != null) {
-            Picasso.with(getActivity()).load(avatarUrl).into(target);
-            slackUser.setText(name);
+            slackUserText.setText(name);
 
             switch (presence) {
                 case "active":
@@ -68,32 +71,30 @@ public class LoggedInFragment extends Fragment implements View.OnClickListener {
                     presenceImage.setImageResource(R.drawable.gray_circle);
                     presenceText.setText("Offline");
             }
+
+            avatarImage.setVisibility(View.VISIBLE);
+            presenceImage.setVisibility(View.VISIBLE);
+            slackUserText.setVisibility(View.VISIBLE);
+            presenceText.setVisibility(View.VISIBLE);
+            loadingSpinner.setVisibility(View.GONE);
+            loadingText.setVisibility(View.GONE);
         }
     }
 
-    private Target target = new Target() {
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-            avatarImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(bitmap, resources.getDimensionPixelSize(R.dimen.Ethanifier_avatarSize)));
+    private void updateAvatar() {
+        final Context activity = getActivity();
+
+        if(activity != null) {
+            avatarImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(avatarBitmap, resources.getDimensionPixelSize(R.dimen.Ethanifier_avatarSize)));
         }
-
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
-
-        }
-
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-        }
-    };
+    }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
         resources = getResources();
-        anonymousAvatar = BitmapFactory.decodeResource(resources, io.supportkit.ui.R.drawable.supportkit_img_avatar);
+        anonymousAvatarBitmap = BitmapFactory.decodeResource(resources, io.supportkit.ui.R.drawable.supportkit_img_avatar);
     }
 
     @Override
@@ -103,15 +104,21 @@ public class LoggedInFragment extends Fragment implements View.OnClickListener {
         chatButton = (Button) view.findViewById(R.id.chatButton);
         avatarImage = (ImageView) view.findViewById(R.id.avatarImage);
         presenceImage = (ImageView) view.findViewById(R.id.presenceImage);
-        slackUser = (TextView) view.findViewById(R.id.slackUser);
+        slackUserText = (TextView) view.findViewById(R.id.slackUserText);
         presenceText = (TextView) view.findViewById(R.id.presenceText);
+        loadingText = (TextView) view.findViewById(R.id.loadingText);
+        loadingSpinner = (ProgressBar) view.findViewById(R.id.loadingSpinner);
 
-        avatarImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(anonymousAvatar, resources.getDimensionPixelSize(R.dimen.Ethanifier_avatarSize)));
+        avatarImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(anonymousAvatarBitmap, resources.getDimensionPixelSize(R.dimen.Ethanifier_avatarSize)));
 
         chatButton.setOnClickListener(this);
 
-        if (slackResponseSuccessful) {
-            downloadAvatar();
+        if (presence != null) {
+            updateAvailability();
+        }
+
+        if (avatarBitmap != null) {
+            updateAvatar();
         }
 
         return view;

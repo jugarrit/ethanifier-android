@@ -2,6 +2,8 @@ package io.supportkit.ethanifier;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,8 @@ import android.os.Bundle;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +25,7 @@ import java.util.Map;
 import io.supportkit.core.User;
 import io.supportkit.ethanifier.fragments.LoggedInFragment;
 import io.supportkit.ethanifier.fragments.OnboardingFragment;
+import io.supportkit.ethanifier.utils.ImageHelper;
 
 public class MainActivity extends AppCompatActivity implements OnboardingFragment.OnUserLoginListener {
     private static SharedPreferences settings;
@@ -99,8 +104,26 @@ public class MainActivity extends AppCompatActivity implements OnboardingFragmen
         name = slackResponses[1].getJSONObject("user").getString("real_name");
         avatarUrl = slackResponses[1].getJSONObject("user").getJSONObject("profile").getString("image_192");
 
-        loggedInFragment.onSlackResponse(presence, name, avatarUrl);
+        loggedInFragment.onPresenceLoaded(presence, name);
+        Picasso.with(this).load(avatarUrl).into(target);
     }
+
+    private Target target = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+            loggedInFragment.onAvatarLoaded(bitmap);
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
 
     private class AsyncSlackCaller extends AsyncTask<String, Void, JSONObject[]> {
         private OkHttpClient client;

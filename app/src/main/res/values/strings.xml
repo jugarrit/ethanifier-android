@@ -8,4 +8,5 @@
     <string name="emailHint">Email</string>
     <string name="loginButtonString">GET STARTED</string>
     <string name="chatButtonString">CHAT WITH ME NOW</string>
+    <string name="availabilityText">Checking Availability...</string>
 </resources>
