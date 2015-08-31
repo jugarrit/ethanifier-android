@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="io.supportkit.ethanifier.fragments.LoggedInFragment"
+    android:orientation="vertical"
+    android:background="@color/Ethanifier_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="90dp">
+
+        <ImageView
+            android:layout_width="@dimen/Ethanifier_avatarSize"
+            android:layout_height="@dimen/Ethanifier_avatarSize"
+            android:id="@+id/avatarImage"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/avatar"
+            android:contentDescription="Ethan's Avatar" />
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@drawable/gray_circle"
+            android:id="@+id/presenceImage"
+            android:gravity="right"
+            android:layout_alignBottom="@id/avatarImage"
+            android:layout_marginRight="9dp"
+            android:layout_marginBottom="3dp"
+            android:layout_alignRight="@id/avatarImage" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/slackUser"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/Ethanifier_headerText"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/presenceText"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/Ethanifier_subheaderText" />
+
+    <Button
+        android:layout_width="@dimen/Ethanifier_inputWidth"
+        android:layout_height="40dp"
+        android:text="@string/chatButtonString"
+        android:id="@+id/chatButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/Ethanifier_buttonText"
+        android:background="@color/Ethanifier_buttonBackground" />
+</LinearLayout>

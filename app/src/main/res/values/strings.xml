@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Ethanifier</string>
+    <string name="welcomeMessage">Welcome to Ethanifier! Please enter in your first name, last name and email.</string>
+    <string name="welcomeSlogan">Let anyone chat with you</string>
+    <string name="onboardingActivityTitle">OnboardingActivity</string>
+    <string name="firstNameHint">First Name</string>
+    <string name="lastNameHint">Last Name</string>
+    <string name="emailHint">Email</string>
+    <string name="loginButtonString">GET STARTED</string>
+    <string name="chatButtonString">CHAT WITH ME NOW</string>
+</resources>

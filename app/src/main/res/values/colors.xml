@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Ethanifier_background">#263238</color>
+    <color name="Ethanifier_buttonBackground">#37474f</color>
+    <color name="Ethanifier_buttonText">#b0bec5</color>
+    <color name="Ethanifier_subheaderText">#90a4ae</color>
+    <color name="Ethanifier_headerText">#ffffff</color>
+    <color name="Ethanifier_inputPlaceholder">#455a64</color>
+    <color name="Ethanifier_inputText">#ffffff</color>
+</resources>
+

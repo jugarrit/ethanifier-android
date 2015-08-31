@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="120dp"
+    tools:context=".OnboardingActivityFragment"
+    android:orientation="vertical"
+    android:background="@color/Ethanifier_background">
+
+    <!-- Dummy item to prevent AutoCompleteTextView from receiving focus -->
+    <LinearLayout
+        android:focusable="true" android:focusableInTouchMode="true"
+        android:layout_width="0px" android:layout_height="0px"/>
+
+    <ImageView
+        android:layout_width="198dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ethanfier_logo"
+        android:layout_marginBottom="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/welcomeSlogan"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/Ethanifier_subheaderText" />
+
+    <EditText
+        android:layout_width="@dimen/Ethanifier_inputWidth"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/firstNameText"
+        android:hint="@string/firstNameHint"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal|top"
+        android:textColorHint="@color/Ethanifier_inputPlaceholder"
+        android:textColor="@color/Ethanifier_inputText" />
+
+    <EditText
+        android:layout_width="@dimen/Ethanifier_inputWidth"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/lastNameText"
+        android:hint="@string/lastNameHint"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/Ethanifier_inputPlaceholder"
+        android:textColor="@color/Ethanifier_inputText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/emailText"
+        android:hint="@string/emailHint"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="@dimen/Ethanifier_inputWidth"
+        android:layout_height="wrap_content"
+        android:text="@string/loginButtonString"
+        android:id="@+id/loginButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:enabled="false"
+        android:background="@color/Ethanifier_buttonBackground"
+        android:textColor="@color/Ethanifier_buttonText"/>
+
+</LinearLayout>
