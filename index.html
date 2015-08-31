@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Ethanifier for Android by juliangarritano</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Ethanifier for Android</h1>
+          <h2>Ethanifier is an Android application that allows anyone to see your presence in Slack and message you</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/juliangarritano/ethanifier-android/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/juliangarritano/ethanifier-android/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/juliangarritano/ethanifier-android" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="ethanifier-for-android" class="anchor" href="#ethanifier-for-android" aria-hidden="true"><span class="octicon octicon-link"></span></a>ethanifier for android</h1>
+
+<p>Ethanifier is an application that allows anyone to see your presence in Slack and message you</p>
+
+<h3>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h3>
+
+<p>Fork or clone the repository</p>
+
+<pre><code>git clone https://github.com/juliangarritano/ethanifier-android.git
+</code></pre>
+
+<p>Sign up for a free app token on <a href="https://app.supportkit.io">SupportKit.io</a></p>
+
+<p>Set up a Slack integration in the app you just created (this is how you'll talk to people)</p>
+
+<p>Open the project you just cloned in Android Studio (Open an existing Android Studio project)</p>
+
+<p>Copy and paste the app token into the <code>EthanifierApplication.java</code> file in the Ethanifier project. 
+You'll want to replace the token in the init call with your own token.</p>
+
+<h3>
+<a id="slack-presence" class="anchor" href="#slack-presence" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slack Presence</h3>
+
+<p>This flavour of Ethanifier includes Slack presence, so your users can see if you're online or not.</p>
+
+<p>To set this up, you'll need a secure web app to store your Slack credentials</p>
+
+<p>Worry not! I've created a button that will automatically deploy a copy of this application to Heroku for you at the click of a button</p>
+
+<p>To find your Slack credentials, go <a href="https://api.slack.com/methods/users.getPresence/test">here</a></p>
+
+<p>Click on your @username, and press Test Method</p>
+
+<p>You will want to note the token and user generated in the URL Slack provides.</p>
+
+<p><img src="https://github.com/juliangarritano/ethanifier-android/raw/master/images/get_presence.png" alt="Slack Credentials"></p>
+
+<p>To deploy your web app, click this handy button below</p>
+
+<p><a href="https://heroku.com/deploy?template=https://github.com/juliangarritano/ethanifier-server"><img src="https://cloud.githubusercontent.com/assets/12450961/9590632/ef92ff16-5003-11e5-8eb3-5c7272a31621.png" alt="Deploy"></a></p>
+
+<p>Once you've created an account and deployed your application, you'll want to configure it with your Slack credentials</p>
+
+<p>Click on the Manage App button</p>
+
+<p><img src="https://github.com/juliangarritano/ethanifier-android/raw/master/images/manage_app.png" alt="Manage App"></p>
+
+<p>Go to Settings and click Reveal Config Variables</p>
+
+<p>Create two configuration variables, SLACK_USER_ID and SLACK_AUTH_TOKEN</p>
+
+<p>Paste the credentials that were generated from Slack above.</p>
+
+<p><img src="https://github.com/juliangarritano/ethanifier-android/raw/master/images/app_settings.png" alt="Config Variables"></p>
+
+<p>That's it! You now have your very own web application.</p>
+
+<h3>
+<a id="finishing-touches" class="anchor" href="#finishing-touches" aria-hidden="true"><span class="octicon octicon-link"></span></a>Finishing touches</h3>
+
+<p>Copy your heroku app domain (located in the settings screen, should be something like [your_app_name].herokuapp.com)</p>
+
+<p>In <code>MainActivity.java</code> of the Android application, paste your domain name in the apiEndpoint variable:</p>
+
+<p><code>private final String apiEndpoint = "https://ethanifier.herokuapp.com";</code></p>
+
+<p>That's it! You should now have your very own copy of Ethanifier working. Give it a try.</p>
+
+<h3>
+<a id="adding-push-notifications-and-more-features" class="anchor" href="#adding-push-notifications-and-more-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding push notifications and more features</h3>
+
+<p>Take a look at the <a href="http://docs.supportkit.io">SupportKit docs</a> to learn more about the library I used to implement the messaging functionality. It contains many more features that are really handy for any app you might be working on.</p>
+        </section>
+
+        <footer>
+          Ethanifier for Android is maintained by <a href="https://github.com/juliangarritano">juliangarritano</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
