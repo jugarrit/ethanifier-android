@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements OnboardingFragmen
     private final User user = User.getCurrentUser();
     private final AsyncTask asyncAPICaller = new AsyncSlackCaller();
     private final String[] slackMethods = new String[] {"slackPresence", "slackUserInfo"};
-    private final String apiEndpoint = "ethanifier.herokuapp.com";
+    private final String apiEndpoint = "https://ethanifier.herokuapp.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

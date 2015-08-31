@@ -19,7 +19,7 @@ Set up a Slack integration in the app you just created (this is how you'll talk 
 Open the project you just cloned in Android Studio (Open an existing Android Studio project)
 
 Copy and paste the app token into the `EthanifierApplication.java` file in the Ethanifier project. 
-You'll want to replace the string that says "YOUR-APP-TOKEN" with your own token.
+You'll want to replace the token in the init call with your own token.
 
 ### Slack Presence
 
@@ -63,7 +63,7 @@ Copy your heroku app domain (located in the settings screen, should be something
 
 In `MainActivity.java` of the Android application, paste your domain name in the apiEndpoint variable:
 
-`private final String apiEndpoint = "ethanifier.herokuapp.com";`
+`private final String apiEndpoint = "https://ethanifier.herokuapp.com";`
 
 That's it! You should now have your very own copy of Ethanifier working. Give it a try.
 
